@@ -1,0 +1,539 @@
+###########################
+Day 2 : 8th June 2025 
+###########################
+
+Fundamentals of Linux Operating System
+
+Overview of Linux
+Linux Architecture
+Linux Distributions
+Basic Linux Commands
+File Permission Management
+User Creation
+Shell Scripts
+SSH and VI Utility
+
+Architecture :
+
+	Operating System -> Interface between the user Applications and Hardware 
+	
+	- Windows 
+	
+	- Mac 
+	
+	- Linux 
+	
+	
+	Linux :
+	
+	 - Is Open-Source
+	 - Is Secured 
+	 - Based on the Command Line Interface  - Linux Cli Commands 
+	 - Core of Linux OS is called as Kernel.
+		- Components of Kernel:
+			- Network
+			- Storage
+			- IPC - Inter-Process Communication
+			- User Management 
+			- Security Management 
+			- Namespace and Control Groups 
+				- It Create an isolated address space to run any process.
+				
+			- CUI - Command User Interface 
+			
+	Linux OS Distributions :
+	
+		- Flavors of Linux OS 
+		
+			- centos/rhel
+			- debian/Ubuntu
+			- Fedora
+			
+			
+		Package Management :
+		
+			- Linux Package Manager - used to install/uninstall/update the Linux packages 
+			
+				
+			- Centos/RHEL			--> yum Package Manager 
+			- debian/Ubuntu			--> apt / apt-get Package Manager
+			- Fedora				--> dnf Package Manager(Latest Version of Fedora Distribution)
+										yum Package Manager(Previous Version of Fedora Distribution)
+										
+		Working with Package Manager :
+			
+			- Only as a root user we can access the package manager by default
+				- Elevate the Access to root user level 
+				
+					$ sudo -i 	==> Elevate the Access to root user level 
+					
+					
+	Your Roles and Responsibilities :::
+
+		Learn Linux on DevOps Perspectives:
+		
+			- To install/uninstall/update the Linux packages 
+			- To Work with DevOps Tools and Packages 
+			- Client/Server Architecture
+				- Access Remote Servers 
+				- User Management
+		
+		As as DevOps Team we focus on :
+
+			- Package Management 
+			- File Management
+			- Access Management 			
+			- User Management 
+			- Remote Server Management
+			- Process Automation - using Shell Scripts 
+			
+	
+	1. Package Management :	
+	
+		- Anys Software/Services --> install/uninstall/update
+					
+		Package Management :
+		
+			- Linux Package Manager - used to install/uninstall/update the Linux packages 
+			
+				
+			- Centos/RHEL			--> yum Package Manager 
+			- debian/Ubuntu			--> apt / apt-get Package Manager
+			- Fedora				--> dnf Package Manager(Latest Version of Fedora Distribution)
+										yum Package Manager(Previous Version of Fedora Distribution)
+										
+		Working with Package Manager :
+			
+			- Only as a root user we can access the package manager by default
+				- Elevate the Access to root user level 
+				
+					$ sudo -i 	==> Elevate the Access to root user level 	
+					
+					
+		To Install any package :
+		
+			- Install Pre-Requisites (if any)
+			- Install the Actual Package 
+			- Post-Installation Activities 
+	
+		Test Environment :
+			- Install Pre-Requisitesserv 
+			- Install MySQL
+			- Start MYSQL Server 
+
+
+
+		Package :	Tool / Service 
+		
+				Install Pre-requisites	
+				Install Actual Tool
+				Post Installation Actions				
+		
+					Eg.: Tomcat :::: 
+					
+						Install Pre-requisites			===> jdk 
+						
+						Install Actual Tool				===> Installed Tomcat 
+						
+						Post Installation Actions		===> Started Tomcat 
+						
+						
+		Install and Manage the Packages :
+	
+			Installation and Management of Linux packages are based on the Linux Distributions
+			
+			- Ubuntu 		==> apt 
+			
+				$ sudo -i 	==> Elevate the Access to root user level 	
+				
+				$ apt update 				# Update the default packages running in Linux Machine.
+				
+				# apt install openjdk11 -y
+				
+				# apt install git -y
+				
+				# apt remove git -y
+				
+				# apt update git -y
+	
+			- Centos/RHEL 		==> yum 
+			
+				$ sudo -i 	==> Elevate the Access to root user level 	
+				
+				$ yum update 
+				
+				# yum install openjdk11
+				
+				# java --version 
+				
+				# which java 
+				
+				# yum install git
+				
+				# which git 
+
+				# git --version 
+				
+				# yum remove git 
+				
+				# yum update git 				
+				
+				
+		Working with Linux Services :
+		
+			- Web Application Servers : Tomcat/nginx/httpd
+			
+			- # apt install nginx 			# Install nginx WAS Package 
+			
+			- # systemctl status nginx 
+		
+			- # systemctl start nginx 
+
+			- # systemctl stop nginx 
+
+			- # systemctl restart nginx 
+
+			- # systemctl enable nginx 		# To Make a start-up service
+
+			- # systemctl disable nginx 	# To disable a start-up service		
+				
+			Package :
+			
+				- Stand-alone Tool			Eg.: git
+				- Service					Eg.: tomcat/nginx/jenkins/docker 	
+
+
+			Remote Server : Linux :
+			
+				--> EC2 Instance Connect Option - thru browser
+				
+				--> SSH Agent :
+						- Putty 		Installed in Windows Machine 
+						- MobaXterm 	Installed in Windows Machine 						
+							https://mobaxterm.mobatek.net/download-home-edition.html - Choose Installer Edition
+						
+				--> Using Terminal :
+						- CMD Prompt 
+						- git bash 
+						- terminal
+						
+				SSH Connection :	Secure SHell Connection 
+				
+					-> Host Name 
+					-> User Name 
+					-> User Authentication 
+					
+					-> Authentication Types :
+					
+						- Password Based Authentication
+						
+						- Key Based Authentication
+							- Public Key 
+							- Private Key 
+							- authorized keys
+							
+						- Token Based Authentication
+						
+						- Passwordless Authentication
+							
+
+	Basic Linux Commands :
+	
+		- clear 
+		
+		
+		- apt install nginx -y 
+		
+		- nginx -version
+
+			- # apt install nginx 			# Install nginx WAS Package 
+			
+			- # systemctl status nginx 
+		
+			- # systemctl start nginx 
+
+			- # systemctl stop nginx 
+
+			- # systemctl restart nginx 
+
+			- # systemctl enable nginx 		# To Make a start-up service
+
+			- # systemctl disable nginx 	# To disable a start-up service	
+			
+		- apt remove git -y 
+		
+		
+
+	2. File Management :
+	
+		Directory/Folder 
+			-> Collection of Files and sub-directories
+		
+		File 
+			-> Collection of Records 
+			
+		
+		pwd 			# Present Working Directory
+		
+		exit 			# Exit/Logoff from current user
+		
+		cd 				# Change Directory 
+		
+		cd ~			# Takes the control to the Home Directory of Current User
+		
+		cd /			# Takes the control to the Root Directory 
+		
+		cd <dir_name>	# Change/Navigate to specific directory 
+		
+		cd ..			# Takes the control back to previous directory
+		
+		ls 				# To list the files/dir
+		
+		ls -a 			# To list all the files/dir - including hidden components
+		
+		
+		Create files/Directories :
+		
+		File Operations :
+		
+			- Open / Read / Delete / Update / Rename / Copy 
+			
+			
+		File Operations :
+		
+			- echo "Message" 				# output statement - To print msg to terminal 
+			
+			- echo "Record1" > file1.txt 	# Create/update a file with record
+		
+			- echo "Record1" >> file1.txt 	# Add New Record to a file	
+			
+			- touch <file_name>				# To Create Empty file
+			
+			- cat <file_name>				# To read the file contents 
+			
+			- File Editors :
+			
+				- vi editor					# To Create/Open a file in interactive mode
+				
+				
+				Eg.: 
+				
+					vi <file_name>			# To Create/Open a file in interactive mode
+					
+					
+					vi sample.txt
+					
+					press :
+					
+						i 					# go to insert mode 	
+
+						# Enter the file contents
+						# Enter the file contents
+						# Enter the file contents
+						# Enter the file contents
+					
+						esc :wq				# Save and exit from file 
+						
+						esc :q!				# exit from file without saving the changes 
+						
+						
+			- Rename a file/directory
+
+
+						mv <existing_file_name> <New_file_Name>
+						
+						Eg.: 
+						
+						mv sample1.txt dummyfile1.txt
+						
+			- Delete/Remove files :
+			
+						rm <file_name>
+						
+						rm <file1_name> <file2_name>
+						
+						rm *.txt 
+						
+		Create Directories :
+		
+			mkdir <New_Dir_Name> 				# Make Directory 
+			
+			
+		Copy files between the directories :
+		
+			cp <source_file> <Target_path>
+			Eg.: 
+			
+			cp s1.txt /home/ubuntu/dir2
+					
+		Move files between the directories :
+		
+			mv <source_file> <Target_path>
+			Eg.: 
+			
+			mv s2.txt /home/ubuntu/dir2
+
+
+		ll				# Long Listing 
+			
+			
+		
+	3. File Access Management :::
+	
+		File Types :
+		
+			- Script 
+			- Program 
+			- Artifact 
+			
+			ll				# Long Listing 
+
+		ubuntu@ip-172-31-10-212:~/dir1$ ll
+
+		-rw-rw-r-- 1 ubuntu ubuntu    4 Jun  8 06:49 dir2
+		drwxrwxr-x 2 ubuntu ubuntu 4096 Jun  8 06:49 dir3/
+		-rw-rw-r-- 1 ubuntu ubuntu    5 Jun  8 06:43 s1.txt
+		
+		
+		
+		Owner 
+		
+		Group Users 
+		
+		Public Users 
+		
+		----------
+		
+		-									# Denote dir or file (Possible value:  d or - )
+												'd'  Denotes Directory
+												'-'  Denotes File 
+												
+												
+		 ---								# Denote the Owner Level Access 
+												Possible Values: r / w /x 
+												r - Read only Access 
+												w - Write Access 
+												x - Execute Access 
+		
+			---								# Denote the Group Level Access
+												Possible Values: r / w /x 
+												r - Read only Access 
+												w - Write Access 
+												x - Execute Access
+
+			   ---							# Denote the Public User Level Access
+												Possible Values: r / w /x 
+												r - Read only Access 
+												w - Write Access 
+												x - Execute Access
+
+
+		https://chmod-calculator.com/
+	
+		chmod <Access_Level> <File/Directory_Name>
+		
+		chmod 600 s1.txt
+
+		chmod 600 dir1
+
+
+
+
+	4. User Management :::
+	
+		Create Linux User :
+
+		SSH Connection :	Secure SHell Connection 
+		
+			-> Host Name 
+			-> User Name 
+			-> User Authentication 
+
+
+			-> Authentication Types :
+			
+				- Password Based Authentication
+				
+				- Key Based Authentication
+					- Public Key 
+					- Private Key 
+					- authorized keys
+
+
+
+
+		How to Create Linux User ?
+		
+			Username : devopsadmin 
+			
+			Bash Terminal Access :
+			
+			Home Dir :
+			
+			password :
+			
+			ssh-keys :
+
+
+
+		Create Linux User with SSH Keys :::
+		
+			sudo -i 
+			
+			useradd devopsadmin -s /bin/bash -m -d /home/devopsadmin
+
+			su - devopsadmin
+
+			ssh-keygen -t ecdsa -b 521										#ubuntu 22.04 or higher version of ubuntu				
+
+			cd .ssh
+			
+			ls ~/.ssh 
+
+			#You should see following two files:
+
+			#id_ecdsa - private key
+			#id_ecdsa.pub - public
+			
+			
+			cat id_ecdsa.pub > authorized_keys			# authorized_keys this file name should be same.
+			
+			authorized_keys :::
+				It is the copy of Public Key.
+				
+				Always the private key will be compared with the authorized_keys
+				
+			chmod 600 /home/devopsadmin/.ssh/*					# Used to Change the Access Mode of Files or Directories
+			
+			chown -R devopsadmin:devopsadmin /opt/tomcat/		# Used to Change the Ownership of Files or Directories
+			
+			
+		Get the List of Linux Users ::::
+			cat /etc/passwd
+		
+		Get the list of Linux User Groups :::: 
+			cat /etc/group
+	
+	
+		Create Password to any Linux User:
+		
+			As a root user ::
+			
+				passwd <user_name>
+				
+		root@ip-172-31-46-175:~# passwd devopsadmin
+		New password:
+		Retype new password:
+		passwd: password updated successfully
+		
+				passwd -d <user_name>		# Delete Linux User Password
+
+
+
+Next ::::
+
+			- Remote Server Management
+			- Process Automation - using Shell Scripts 
+			
+			- GIT
+
