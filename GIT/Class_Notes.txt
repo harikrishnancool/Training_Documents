@@ -706,3 +706,329 @@ git cli commands :
   798  clear
   799  history
 
+	
+#######################
+Day 5 : 21th June 2025 
+#######################
+
+	- GIT Ignore!
+	
+		- Is used ignore the files from tracking.
+		- .gitignore is a hidden file, used to maintain the file names/patterns to ignore from tracking.
+		- As a best practise, .gitignore should be the very first commit in any repository.
+		
+		
+	Local Machine :
+	
+	Java_Web_Application_Project1				add 		--> commit --> push to remote repo.
+		- src 
+			- main 
+				- *.java # 3-tier - dbase
+			- test 
+				- *.java 
+		- resources
+			- *.html
+			- *.jsp 
+			- *.css
+		- db_secrets
+		- app.properties
+		- target
+			- *.war
+			
+	
+GIT Branches :
+
+		- Branch is logical copy of any branch(default)
+		- Used to perform parallel development using Branching techniques
+		
+		- default branch - (master/main) ==> Used to maintain the production version of source.
+		
+		- GIT Branches Strategies - are mainly used to maintain the integrity of the default - master/main branch
+		
+	GIT Branches Strategies :
+	
+	Level 0:
+	
+		Repo1: 		
+			- master - cm1,cm2,cm3,....
+			
+	Scenario 1: 
+	
+		Repo1: 
+		
+			- master - cm1,cm2,cm3			
+						- cm1,cm2,cm3,f1cm1,f1cm2,f1cm3			# Upon merging feature1 branch				
+			
+				feature1 - cm1,cm2,cm3,f1cm1,f1cm2,f1cm3
+
+	Scenario 2: 
+	
+		Repo1: 
+		
+			- master - cm1,cm2,cm3				
+							cm1,cm2,cm3,cm4 					# cm4 is Changes_from_Developer_Branch						
+			
+				Developer_Branch - cm1,cm2,cm3				
+									cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+			
+					feature1 - cm1,cm2,cm3				
+								cm1,cm2,cm3,f1cm1,f1cm2,f1cm3		# Incremental Changes in feature1
+								
+					feature2 - 	cm1,cm2,cm3					
+								cm1,cm2,cm3,f2cm1,f2cm2,f2cm3		# Incremental Changes in feature1	
+	
+
+	Scenario 3: 
+	
+		Repo1: 
+		
+			- master - cm1,cm2,cm3				
+							cm1,cm2,cm3,cm4 					# cm4 is Developer1_Changes & Developer2_Changes
+				
+				Integration_Branch - cm1,cm2,cm3,Developer1_Changes,Developer2_Changes 		# Upon merge Developer1_Branch & Developer2_Branch
+				
+					Developer1_Branch - cm1,cm2,cm3				
+										cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+				
+						feature1 - cm1,cm2,cm3				
+									cm1,cm2,cm3,f1cm1,f1cm2,f1cm3		# Incremental Changes in feature1
+									
+						feature2 - 	cm1,cm2,cm3					
+									cm1,cm2,cm3,f2cm1,f2cm2,f2cm3		# Incremental Changes in feature1
+									
+					Developer2_Branch - cm1,cm2,cm3				
+										cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+				
+						feature1 - cm1,cm2,cm3				
+									cm1,cm2,cm3,f1cm1,f1cm2,f1cm3		# Incremental Changes in feature1
+									
+						feature2 - 	cm1,cm2,cm3					
+									cm1,cm2,cm3,f2cm1,f2cm2,f2cm3		# Incremental Changes in feature1
+
+	Scenario 4: 
+	
+		Repo1: 
+		
+			- master - cm1,cm2,cm3				
+							cm1,cm2,cm3,cm4 					# cm4 is the changes from Team1 & Team2
+							
+				Release_Branch - cm1,cm2,cm3,Team1_Changes,Team2_Changes
+				
+				Integration_Branch1 - cm1,cm2,cm3													# Team1
+										- cm1,cm2,cm3,Developer1_Changes,Developer2_Changes 		# Upon merge Developer1_Branch & Developer2_Branch
+				
+					Developer1_Branch - cm1,cm2,cm3				
+										cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+				
+						feature1 - cm1,cm2,cm3				
+									cm1,cm2,cm3,f1cm1,f1cm2,f1cm3		# Incremental Changes in feature1
+									
+						feature2 - 	cm1,cm2,cm3					
+									cm1,cm2,cm3,f2cm1,f2cm2,f2cm3		# Incremental Changes in feature1
+									
+					Developer2_Branch - cm1,cm2,cm3				
+										cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+				
+						feature1 - cm1,cm2,cm3				
+									cm1,cm2,cm3,f1cm1,f1cm2,f1cm3		# Incremental Changes in feature1
+									
+						feature2 - 	cm1,cm2,cm3					
+									cm1,cm2,cm3,f2cm1,f2cm2,f2cm3		# Incremental Changes in feature1
+									
+									
+				Integration_Branch2 - cm1,cm2,cm3													# Team2
+										- cm1,cm2,cm3,Developer1_Changes,Developer2_Changes 		# Upon merge Developer1_Branch & Developer2_Branch
+				
+					Developer1_Branch - cm1,cm2,cm3				
+										cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+				
+						feature1 - cm1,cm2,cm3				
+									cm1,cm2,cm3,f1cm1,f1cm2,f1cm3		# Incremental Changes in feature1
+									
+						feature2 - 	cm1,cm2,cm3					
+									cm1,cm2,cm3,f2cm1,f2cm2,f2cm3		# Incremental Changes in feature1
+									
+					Developer2_Branch - cm1,cm2,cm3				
+										cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+				
+						feature1 - cm1,cm2,cm3				
+									cm1,cm2,cm3,f1cm1,f1cm2,f1cm3		# Incremental Changes in feature1
+									
+						feature2 - 	cm1,cm2,cm3					
+									cm1,cm2,cm3,f2cm1,f2cm2,f2cm3		# Incremental Changes in feature1
+									
+									
+	Scenario 5: 
+	
+		Repo1: 
+		
+			- master - cm1,cm2,cm3				
+							cm1,cm2,cm3,cm4 					# cm4 is the hot_fix_branch changes
+
+				hot_fix_branch - cm1,cm2,cm3
+									cm1,cm2,cm3,hf1,hf2
+									
+										
+	Working with Git Branches :
+
+
+		- git branch 							# to get the list of branches 
+		
+		- git branch <new_branch_name>			# Create new_branch
+		
+		- git switch -c <new_branch_name>		# Create new_branch & Switch to new_branch.
+		
+		- git switch <exiting_branch_name>		# Switch to a branch
+		
+		
+			Repo1: 
+			
+				- master - cm1,cm2,cm3
+
+					git switch -c feature1				# Create new_branch & Switch to new_branch.
+					
+					feature1 :
+							cm1,cm2,cm3,f1cm1,f1cm2 	# Perform incremental changes 
+							
+						git switch master 				# Switch to master branch
+							
+						git merge feature1				# Merge command should be executed from target branch
+							
+
+	GIT Merge Conflicts :
+
+		- When more than one user/feature try to update same file at the same level, merge conflict occurs.
+		
+		
+	Handle/Fix Merge Conflicts :
+
+		- How to fix Merge Conflicts ?
+		
+			- Identify the file(s) causing the merge conflicts
+			- Open the file and review the changes 
+			- Upon review, decide which changes to be retained/delete from that file(s).
+			- Update the file by removing the extra header/footer notes and contents.
+			- Perform git add and git commit to fix the issue.
+			
+	On DevOps Perspectives :
+
+		- Always prevent merge conflicts instead of fixing it. 
+		
+		
+
+GIT Rebase : 
+
+		- Rebase is used to maintain linear commit history 
+		- Rebase is used to keep the current branch in-sync with target branch 
+		- Rebase can prevent merge-conflicts in the target branch 
+		- As a best practise, it is always recommended to use rebase before merge
+		
+		
+	
+	Repo1:
+	
+		master - cm1,cm2 
+		
+					- cm1,cm2,f1cm1,f1cm2						# Upon merging feature1
+					
+					- cm1,cm2,f2cm1,f2cm2,f1cm1,f1cm2			# Upon Merging feature2 without proper rebase.
+					
+					- cm1,cm2,f1cm1,f1cm2,f2cm1,f2cm2 			# Expected linear commit history using rebase.
+		
+			feature1 - cm1,cm2 
+					 - cm1,cm2,f1cm1,f1cm2 
+					 
+					 git switch master 
+					 
+					 git merge feature1 
+			
+			feature2 - cm1,cm2 				
+					 - cm1,cm2,f2cm1,f2cm2 
+			
+					 git rebase master 
+					 
+					 - cm1,cm2,f1cm1,f1cm2,f2cm1,f2cm2	
+
+					 git switch master 
+					 
+					 git merge feature2 
+
+
+GIT Squash :
+
+	- Used to combine more than one commits into single commit point.
+	
+	
+	Repo1:
+	
+		master - cm1,cm2 
+		
+				- cm1,cm2,f1cm1,f1cm2,......................................,f1cm200		# Merging without squash option
+				
+				- cm1,cm2,feature1_Changes													# Merging with squash option
+		
+			feature1 - cm1,cm2 
+			
+						- cm1,cm2,f1cm1,f1cm2,......................................,f1cm200
+						
+					git switch master 
+					
+					git merge --squash feature1					# Add the incremental changes of feature1 to the staging area of master.
+					
+					git commit -m "feature1_Changes"
+
+
+	
+
+git cherry-pick :
+
+	-> Used to merge the specific commits from one branch to another branch
+	
+	-> git cherry-pick is NOT recommended in real time environment. 
+	
+	
+	
+	Scenario 4: 
+	
+		Repo1: 
+		
+			- master - cm1,cm2,cm3				
+							cm1,cm2,cm3,cm4 					# cm4 is the changes from Team1 & Team2
+							
+				Release_Branch - cm1,cm2,cm3,Team1_Changes,Team2_Changes	
+				
+				Syntax: 
+				
+					git cherry-pick <commit_id>
+	
+					git cherry-pick Team1_Changes
+	
+
+Git Stash :
+
+	- Used to save the uncommited changes to temporary area.
+	
+	git stash save "save_message"	# Save an entry in stash list
+	
+	git stash list 					# Get the Stash list.
+	
+	git stash apply 				# To apply the latest entry from the stash list back to staging area. 	
+	git stash apply stash@{2}		# To apply a specific entry from the stash list back to staging area
+	
+	git stash drop 					# To delete the latest entry from the stash list.
+	git stash drop stash@{2}		# To delete a specific entry from the stash list.
+	
+	git stash pop 					
+									# To apply the latest entry from the stash list back to staging area as well as delete that latest entry from the stash list.								
+									
+	git stash pop stash@{1}	
+									# To apply a specific entry from the stash list back to staging area as well as delete that specific entry from the stash list.
+									
+	git stash clear 				# To clean-up the stash list 
+	
+
+
+Next:
+
+Git Remote Repositories :	
+Next Module :	
