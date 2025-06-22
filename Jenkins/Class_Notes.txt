@@ -27,7 +27,7 @@ Day 6 : 22nd June 2025
 		
 			- Eclipse based IDEs - like Eclipse for Java,Pycharm,Intellij, Visual Studio, Visual Studio Code
 			- Source Code Management Tool - like github/AWS Code Commit/Azure Repos 
-			- Jenkins/AzurePipeline/AWS CodeBuild/gitlab-ci/bamboo
+			- Jenkins/AzurePipeline/AWS CodeBuild/gitlab-ci/bamboo/github-actions
 			
 			
 	Environment:
