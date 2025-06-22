@@ -1326,3 +1326,187 @@ Next:
 
 Git Remote Repositories :	
 Next Module :	
+
+
+
+#######################
+Day 6 : 22nd June 2025 
+#######################
+
+
+Git Remote Repositories :	GITHUB Remote Repository Server.
+
+	- Open-Source Projects
+	
+	- gitlab/azRepos/Bitbucket/AWS CodeCommit ==> Distributed VCS 
+	
+	
+- GIT File Workflow :
+
+
+Local Machine 																						Remote Git Server 	
+	
+Working Directory				Staging Area 					  Local Git Repository			     Remote Repository
+
+index.html 		 ============>	index.html 	  =================>  index.html_V1.0	   ===========>   index.html_V1.0
+					git add 					 git commit 							git push
+
+		
+
+Developers' Workload :
+
+	- Enhancement Project / Bug Fixing 
+	
+	- New Project 
+	
+	
+	git clone				# To copy/clone the entire remote repository to Local Machine 
+
+	git add 				# To Add the changes from working directory to staging area/index area
+	
+	git commit 				# To Commit the changes from staging area to local repository
+	
+	git push				# To push the changes from local repository to repository
+	
+	git pull/git fetch 	:::	
+	
+		-	# Both git pull & git fetch are used to handle incremental changes from remote repository
+		
+		- git fetch :
+			# It is used to check for any incremental changes in remote repository, if any incremental changes exist, it will update the details in local repository not the Working directory.
+			
+			Use git pull / git merge to work on the changes
+			
+		- git pull :
+			# It is used to check for any incremental changes in remote repository, if any incremental changes exist, it will update the local repository as well the Working directory.
+			
+			git pull = git fetch + git merge 
+			
+			
+Developers' Workload :
+
+	- Enhancement Project / Bug Fixing 	==> Working with existing Remote Repos
+	
+	- New Project 						==> Create New Repo.
+	
+	
+	Login to github account :
+
+		- Create Remote Repositories 
+		
+		- Working with Remote Repositories using GITHub Web Interface.
+		
+		
+		- Created Branch 
+		
+		- Merge the feature branch to main branch in github
+		
+			- using pull request. 
+				- is always created by the developers & submit to the reviewer/approver
+				- Upon approval(s), the changes can be merged into main branch
+	
+	- Enhancement Project / Bug Fixing 	==> Working with existing Remote Repos
+	
+		- git clone :
+		
+				git clone <remote repository url>
+				
+				git clone https://github.com/SA-WkEnd-DevOps-AI/TestRepo1.git
+		
+		- git push 
+		
+				git push -u origin localfeature1
+				
+					- User Access to push the changes to remote repo.
+					- github login_id & Personal Access Token			
+		
+		- git pull/fetch 
+		
+			- As a best practise it is always recommended to use git pull before push event.		
+			
+		
+		- git remote -v 			# Is used to list the remote repos linked to the local repository
+		
+		- git remote add 			# git remote add origin https://github.com/SA-WkEnd-DevOps-AI/TestRepo1.git
+		
+		- git remote remove			# git remote remove origin 
+		
+	
+	- New Project 					==> Create New Repo.
+
+			- Create empty github repo 
+			
+			- Create local repo and push it remote repo
+	
+	
+
+Access github repos using Visual Studio Code IDE
+
+
+
+
+  795  clear
+  796  cd ..
+  797  ls
+  798  mkdir remoterepos
+  799  cd remoterepos/
+  800  clear
+  801  git clone https://github.com/SA-WkEnd-DevOps-AI/TestRepo1.git
+  802  ls
+  803  cd TestRepo1/
+  804  ls
+  805  git switch -c localfeature1
+  806  clear
+  807  git status
+  808  git log --oneline
+  809  git remote -v
+  810  echo "rec1" >> localfile1.txt
+  811  git add .
+  812  git commit -m "Created localfile1.txt"
+  813  git status
+  814  git log --oneline
+  815  git push -u origin localfeature1
+  816  clear
+  817  git switch main
+  818  ls
+  819  git log --oneline
+  820  git status
+  821  ls
+  822  git ls-files
+  823  git fetch
+  824  git status
+  825  ls
+  826  git ls-files
+  827  git pull
+  828  git status
+  829  git ls-files
+  830  ls
+  831  git log --oneline
+  832  git status
+  833  git pull
+  834  git remote -v
+  835  git remote remove origin
+  836  git remote -v
+  837  git remote add origin https://github.com/SA-WkEnd-DevOps-AI/TestRepo1.git
+  838  git remote -v
+  839  cd ..
+  840  mkdir testrepo2
+  841  cd testrepo2
+  842  git init
+  843  echo "rec1" >> f1.txt
+  844  git add .
+  845  git commmit -m "cm1"
+  846  git commit -m "cm1"
+  847  git remote -v
+  848  git branch -M main
+  849  git branch -M master
+  850  git remote add origin https://github.com/SA-WkEnd-DevOps-AI/testrepo2.git
+  851  git remote -v
+  852  git push -u origin master
+  853  git remote add origin1 https://github.com/SA-WkEnd-DevOps-AI/testrepo1.git
+  854  git remote -v
+  855  git branch -M main
+  856  git push -u origin1 main
+  857  clear
+  858  clear
+  859  history
