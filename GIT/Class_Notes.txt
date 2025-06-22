@@ -1026,6 +1026,300 @@ Git Stash :
 									
 	git stash clear 				# To clean-up the stash list 
 	
+  501  cd d:
+  502  ls
+  503  cd SA_WE-D-AI/
+  504  clear
+  505  ls
+  506  mkdir sample_repo1
+  507  cd sample_repo1/
+  508  clear
+  509  ls -
+  510  ls -a
+  511  git init
+  512  ls -a
+  513  git status
+  514  ls
+  515  vi .gitignore
+  516  clear
+  517  ls
+  518  ls -a
+  519  cat .gitignore
+  520  git status
+  521  git add .
+  522  git commit -m "Initial commit for .gitignore"
+  523  clear
+  524  ls
+  525  cat .gitignore
+  526  echo "rec1" >> sample1.java
+  527  git status
+  528  echo "rec1" >> s1.txt
+  529  git status
+  530  ls
+  531  git add .
+  532  git ls-files
+  533  git status
+  534  git commit -m "cm1"
+  535  git status
+  536  ls
+  537  git ls-files
+  538  clear
+  539  ls
+  540  cd ..
+  541  ls
+  542  mkdir sample_repo2
+  543  cd sample_repo2
+  544  clear
+  545  git init
+  546  git status
+  547  git branch
+  548  echo "rec1" >> f1.txt
+  549  git add .
+  550  git commit -m "cm1"
+  551  git branch
+  552  git branch feature1
+  553  git branch
+  554  git branch feature2
+  555  git branch
+  556  git switch feature1
+  557  git switch master
+  558  git switch -c feature3
+  559  git branch
+  560  git switch master
+  561  ls
+  562  cat f1.txt
+  563  git branch
+  564  git status
+  565  git log --oneline
+  566  git switch feature1
+  567  git log --oneline
+  568  ls
+  569  cat f1.txt
+  570  echo "rec1" >> l1.txt
+  571  git add .
+  572  git commit -m "f1cm1"
+  573  git status
+  574  git log --oneline
+  575  l
+  576  ls
+  577  git switch master
+  578  ls
+  579  git log --oneline
+  580  git merge feature1
+  581  ls
+  582  git log --oneline
+  583  cd ..
+  584  ls
+  585  mkdir sample_repo3
+  586  cd sample_repo3
+  587  clear
+  588  git init
+  589  echo "rec1" >> f1.txt
+  590  git add .
+  591  git commit -m "cm1"
+  592  git branch
+  593  git branch feature1
+  594  git branch feature2
+  595  git branch
+  596  ls
+  597  git switch -c feature1
+  598  git switch feature1
+  599  git log --oneline
+  600  ls
+  601  cat f1.txt
+  602  echo "Record2 from feature1" >> f1.txt
+  603  cat f1.txt
+  604  git status
+  605  git add .
+  606  git commit -m "f1cm1"
+  607  git log --oneline
+  608  cat f1.txt
+  609  git switch master
+  610  cat f1.txt
+  611  git log --oneline
+  612  git merge feature1
+  613  cat f1.txt
+  614  git log --oneline
+  615  git switch feature2
+  616  ls
+  617  cat f1.txt
+  618  git log --oneline
+  619  echo "Record2 from Feature2" >> f1.txt
+  620  cat f1.txt
+  621  git add .
+  622  git commit -m "f2cm1"
+  623  git status
+  624  git log --oneline
+  625  git switch master
+  626  git log --oneline
+  627  cat f1.txt
+  628  git merge feature2
+  629  clear
+  630  git status
+  631  ls
+  632  cat f1.txt
+  633  vi f1.txt
+  634  git add .
+  635  git commit -m "Updated f1.txt - fixed Merge Conflict"
+  636  cat f1.txt
+  637  git log --oneline
+  638  clear
+  639  ls
+  640  cd ..
+  641  mkdir sample_repo4
+  642  clear
+  643  cd sample_repo4/
+  644  git init
+  645  echo "rec1" >> s1.txt
+  646  git add .
+  647  git commit -m "cm1"
+  648  clear
+  649  echo "rec1" >> s2.txt
+  650  git add .
+  651  git commit -m "cm2"
+  652  git log --oneline
+  653  git branch feature1
+  654  git branch feature2
+  655  git switch feature1
+  656  ls
+  657  git log --oneline
+  658  echo "rec1" >> q1.txt
+  659  git add .
+  660  git commit -m "f1cm1"
+  661  echo "rec1" >> q2.txt
+  662  git add .
+  663  git commit -m "f1cm2"
+  664  echo "rec1" >> q3.txt
+  665  git add .
+  666  git commit -m "f1cm3"
+  667  ls
+  668  git log --oneline
+  669  git rebase master
+  670  git switch master
+  671  git merge feature1
+  672  git log --oneline
+  673  ls
+  674  git switch feature2
+  675  ls
+  676  git log --oneline
+  677  echo "Rec1" >> l1.txt
+  678  git add .
+  679  git commit -m "f2cm1"
+  680  echo "Rec1" >> l2.txt
+  681  git add .
+  682  git commit -m "f2cm2"
+  683  git log --oneline
+  684  git rebase master
+  685  ls
+  686  git log --oneline
+  687  git rebase master
+  688  git switch master
+  689  git log --oneline
+  690  ls
+  691  git merge feature2
+  692  git log --oneline
+  693  ls
+  694  git switch feature1
+  695  ls
+  696  git log --oneline
+  697  git rebase master
+  698  git log --oneline
+  699  ls
+  700  ls
+  701  git log --oneline
+  702  git status
+  703  echo "rec1" >> f1.txt
+  704  git add .
+  705  git commit -m "cr1"
+  706  echo "rec1" >> f2.txt
+  707  git add .
+  708  git commit -m "cr2"
+  709  echo "rec1" >> f3.txt
+  710  git add .
+  711  git commit -m "cr3"
+  712  echo "rec1" >> f4.txt
+  713  git add .
+  714  git commit -m "cr4"
+  715  echo "rec1" >> f5.txt
+  716  git add .
+  717  git commit -m "cr5"
+  718  ls
+  719  git log --oneline
+  720  git rebase master
+  721  git switch master
+  722  git log --oneline
+  723  git merge --squash feature1
+  724  git status
+  725  git commit -m "Combined feature1_changes"
+  726  git log --oneline
+  727  ls
+  728  git show 3a41b4f
+  729  ls
+  730  git log --oneline
+  731  git switch feature1
+  732  git log --oneline
+  733  git rebase master
+  734  git log --oneline
+  735  clear
+  736  ls
+  737  git branch
+  738  git status
+  739  git log --oneline
+  740  clear
+  741  git status
+  742  echo "rec1" >> k1.txt
+  743  echo "rec2" >> k1.txt
+  744  cat k1.txt
+  745  git add .
+  746  git switch master
+  747  git status
+  748  git switch feature1
+  749  git status
+  750  git stash list
+  751  git stash save "for k1.txt"
+  752  git status
+  753  ls
+  754  git ls-files
+  755  git stash list
+  756  echo "rec1" >> k2.txt
+  757  git add .
+  758  git stash save "for k2.txt"
+  759  git stash list
+  760  echo "rec1" >> k3.txt
+  761  git add .
+  762  git stash save "for k3.txt"
+  763  echo "rec1" >> k4.txt
+  764  git add .
+  765  git stash save "for k4.txt"
+  766  echo "rec1" >> k5.txt
+  767  git add .
+  768  git stash save "for k5.txt"
+  769  git stash list
+  770  git stash apply
+  771  git stash list
+  772  ls
+  773  git commit -m "created k5.txt"
+  774  git stash list
+  775  git stash drop
+  776  git stash list
+  777  git stash pop
+  778  git stash list
+  779  git stash save "for k4.txt"
+  780  git stash list
+  781  git status
+  782  git stash apply stash@{2}
+  783  git stash list
+  784  git commit -m "k2.txt"
+  785  git stash list
+  786  git stash drop stash@{2}
+  787  git stash list
+  788  git stash pop stash@{1}
+  789  git stash list
+  790  git stash save "for k3.txt"
+  791  git stash list
+  792  git stash clear
+  793  git stash list
+  794  history
 
 
 Next:
