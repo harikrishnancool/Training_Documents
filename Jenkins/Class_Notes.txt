@@ -96,3 +96,170 @@ Day 6 : 22nd June 2025
 		Promote the Application to Test Environments
 		Notify 
 		Deploy to Prod 				
+
+
+
+#######################
+Day 7 : 29th June 2025 
+#######################	
+
+	Build Orchestration using Jenkins!
+	
+	Maintain excel sheet to document any error/issues faced during practise.
+	
+	
+	Working with Jenkins :
+	
+	- Developers' Perspectives :
+	
+		- Developers are just the consumers of Jenkins using Jenkins Tools and Services.
+		- Developers use Jenkins to execute/cancel/view the output - workspace of the Jenkins projects/Pipelines/Jobs.
+		
+	- DevOps Perspectives:
+		
+		- DevOps Team is the owner of Jenkins.		
+		
+		- Roles & Responsibilities of DevOps Team/Resources :
+		
+		- Jenkins Administration :
+		
+			- Installation of Jenkins 
+			- Global System Configurations
+			- Plugins Management 
+			- Tools Management 
+			- User Management
+			- Security Management 
+			- Credential Management
+			- Create Jenkins Projects in Jenkins Master Node
+			- Configuration and Management of Jenkins Master/Slave Architecture
+			- Create CICD Pipeline Projects/Jobs to Automate Application Builds and Deployments
+			- Onboard the Applications to CI/CD Process
+			- Jenkins Server - Periodic Backup for Recovery
+			- Periodic Upgrade of Jenkins Server and the plugins
+			- Trouble-shooting any Jenkins related issues
+			
+	
+	
+	- Installation of Jenkins :::	
+	
+		- Ubuntu Machine - 22.04v AMI
+		- Install Jenkins.
+		
+			- Jenkins Package run as a service using default port 8080
+				- It can be execute using Web-Browser
+				
+				
+		https://www.jenkins.io/doc/book/installing/
+		
+		https://www.jenkins.io/doc/book/installing/linux/
+		
+		- Pre-Requisites
+		- Installation of Jenkins 
+		- Post-Installation Activities 
+		
+		- Upon Installation :
+		
+			Access Jenkins Dashboard.
+			
+	- Global System Configurations :
+	
+	
+	- Plugins Management :
+	
+	
+	- Tools Management :
+	
+	
+	- User Management : Enable User Authentication
+	
+	
+	- Security Management :	Enable User Authorization
+	
+	
+	- Credential Management : 
+	
+	
+	- Create Jenkins Projects in Jenkins Master Node :
+	
+		-> Free-Style Projects 
+		
+				- Completely Manual - configured using Jenkins Dashboard/Web-Interface 
+				
+				
+				Jenkins Variables :
+				
+					- Environment Variables 		# Reserved Jenkins Key-words
+													# meant of each job.
+													
+						"jenkins-${JOB_NAME}-${BUILD_NUMBER}"
+						
+						"${var1}"		# Syntax to use variables 
+						
+						
+					
+					
+					- User-Defined Variables.		# Created by the users to parameterize the Jobs.
+				
+				
+				
+							x = 5 
+				
+		
+		-> Pipeline Projects :
+	
+				- Completely Automated - configured using Jenkins Pipeline Scripts - Groovy
+				- Create Pipeline Project Templates to onboard any application.
+				
+				
+				- Two Types of Jenkins Pipelines :
+				
+					- Scripted Pipelines 
+					
+					- Declarative Pipelines 	# Simplified version of Scripted Pipelines.
+												# Script/Snippet Generator - used to generate scripts.
+	CI/CD Workflow :::
+	
+		SCM_Checkout 
+		Application Build 
+		Unit Testing 
+		Create Artifacts 
+		Promote the Application to Test Environments
+		Notify 
+		Deploy to Prod 
+
+
+		
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+            }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'echo "Hello"'
+            }
+        }
+        stage('Deploy to Test Server') {
+            steps {
+                echo 'Perform QA Deployment'
+            }
+        }
+    }
+}
+
+
+Jenkins Pipelines composed of various stages 
+
+Next :::
+
+		- Configuration and Management of Jenkins Master/Slave Architecture
+		- Create CICD Pipeline Projects/Jobs to Automate Application Builds and Deployments
+		- Onboard the Applications to CI/CD Process
+		- Jenkins Server - Periodic Backup for Recovery
+		- Periodic Upgrade of Jenkins Server and the plugins
+		- Trouble-shooting any Jenkins related issues
