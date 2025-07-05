@@ -263,3 +263,286 @@ Next :::
 		- Jenkins Server - Periodic Backup for Recovery
 		- Periodic Upgrade of Jenkins Server and the plugins
 		- Trouble-shooting any Jenkins related issues
+
+
+#######################
+Day 8 : 05th July 2025 
+#######################	
+
+	- Configuration and Management of Jenkins Master/Slave Architecture
+	
+	Muliple Applications with high Build and Release frequencies.
+		
+		Jenkins_Master (VM)			==> To Create Jenkins CI/CD Pipeline Projects and schedule to the builds in the slave_nodes
+																
+			Jenkins_SlaveNode1 (VM)	==> Perform Application Builds - Java Applications 
+
+	Tools :
+
+		Jenkins_Master (VM)			==> GIT,jdk,Jenkins
+																
+			Jenkins_SlaveNode1 (VM)	==> GIT,jdk,maven
+			
+	Integration of Jenkins_Master & Jenkins_SlaveNode1
+	
+		- Integration using SSH.	
+	
+	- Create CI-CD Pipeline Projects/Jobs to Automate Application Builds and Deployments
+	
+	
+	
+pipeline {
+
+    agent { label 'slave1' }
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/SA-WkEnd-DevOps-AI/java-webapp-project.git'
+            }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+            }
+        }
+        stage('Deploy to Test Server') {
+            steps {
+                echo 'Perform QA Deployment'
+            }
+        }
+    }
+}
+
+	
+	
+	- Configuration of Target Servers:
+	
+	Web Application Server : Tomcat/Apache/httpd/Nginx
+	
+	
+	Tomcat Web Application Server :
+	
+	Jenkins_Master 	(VM)				# git,jdk,jenkins 
+		Jenkins_SlaveNode1 (VM)			# git,jdk,maven 
+		
+	Tomcat_Server (VM)					# jdk,tomcat 
+	
+		
+	What is Deployment ???
+	
+	Source Server 																		Target Server 
+	
+		Source_Path&File																	Target_Path
+		
+		
+	Jenkins_SlaveNode1 																	Tomcat_Server 
+	
+		target/*.war																		/opt/tomcat/webapps
+		
+		Upon Deployment :
+		
+		target/*.war							==========>									/opt/tomcat/webapps/*.war
+	
+	
+	
+	
+	Install Publish Over SSH Plugin 
+	
+	Configure Publihs Over SSH Plugin in the Global System Configuration.
+	
+	
+pipeline {
+
+    agent { label 'slave1'}
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/SA-WkEnd-DevOps-AI/java-webapp-project.git'
+            }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+            }
+        }
+        stage('Deploy to Test Server') {
+            steps {
+                script{
+					sshPublisher(publishers: [sshPublisherDesc(configName: 'QA_Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+				}
+            }
+        }
+    }
+}	
+
+
+
+sshPublisher(publishers: [sshPublisherDesc(configName: 'QA_Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+
+
+
+
+	- EMail Notifications :
+	
+
+		In Jenkins Pipeline Jobs, Email Notifications can be done as a post build action.
+		
+		
+		Stage{}
+		post{
+			success 
+			failure 
+			abort
+		}
+		
+		gmail Server ==> 
+
+To Setup the Email Notifications, First we need to set the Email Server in the Jenkins System configuration :
+
+
+
+
+Login to Gmail :::
+
+Click Manage Account Settings
+
+@Left side panel - select Security 
+
+MFA/Two-Way Authentication --> mobile#
+
+Search for App password in the same page
+
+Name:
+Mail
+
+What ? window
+Which Appln - email	
+
+App Password = 16 bytes of App Password. # vasd asda sda sd asd ltzr
+
+
+
+How to setup the Email Server in the Jenkins Config:
+
+goto manage jenkins -> system configuration 
+
+goto Email Notification 
+		
+SMTP Server :
+smtp.gmail.com	
+
+SMTP Authentication
+	User Name: Enter Email ID 
+	Password : 16 bytes of App Token (Created in Gmail)
+	
+Choose SSL :
+
+SMTP Port :: 465
+		
+
+	
+pipeline {
+
+    agent { label 'slave1'}
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/SA-WkEnd-DevOps-AI/java-webapp-project.git'
+            }
+            post {
+                failure {
+                  sh "echo 'Send mail on failure'"
+				  
+					mail bcc: 'l@gmail.com', body: 'Jenkins Jobs Status ', cc: 'l@gmail.com', from: '', replyTo: '', subject: 'SCM-Checkout Failed ', to: 'l@gmail.com'
+					
+					mail bcc: 's1.gmail.com', body: '"Jenkins Jobs Status ${BUILD_URL}"', cc: 's1.gmail.com', from: '', replyTo: '', subject: 'SCM-Checkout Failed ', to: 's1.gmail.com'
+                }
+              }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+            }
+        }
+        stage('Deploy to Test Server') {
+            steps {
+                script{
+					sshPublisher(publishers: [sshPublisherDesc(configName: 'QA_Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+				}
+            }
+            post {
+                Success {
+                  sh "echo 'Send mail on Success-deployment'"
+				  
+					mail bcc: 'l@gmail.com', body: 'Jenkins Jobs Status ', cc: 'l@gmail.com', from: '', replyTo: '', subject: 'Deployment Successful ', to: 'l@gmail.com'
+					
+					mail bcc: 's1.gmail.com', body: '"Jenkins Jobs Status ${BUILD_URL}"', cc: 's1.gmail.com', from: '', replyTo: '', subject: 'Deployment Successful', to: 's1.gmail.com'
+                }
+                Failure {
+                  sh "echo 'Send mail on deployment Failure'"
+				  
+					mail bcc: 'l@gmail.com', body: 'Jenkins Jobs Status ', cc: 'l@gmail.com', from: '', replyTo: '', subject: 'Deployment Failed ', to: 'l@gmail.com'
+					
+					mail bcc: 's1.gmail.com', body: '"Jenkins Jobs Status ${BUILD_URL}"', cc: 's1.gmail.com', from: '', replyTo: '', subject: 'Deployment Failed', to: 's1.gmail.com'
+                }
+                abort {
+                  sh "echo 'Send mail on deployment Aborted'"
+				  
+					mail bcc: 'l@gmail.com', body: 'Jenkins Jobs Status ', cc: 'l@gmail.com', from: '', replyTo: '', subject: 'Deployment Aborted ', to: 'l@gmail.com'
+					
+					mail bcc: 's1.gmail.com', body: '"Jenkins Jobs Status ${BUILD_URL}"', cc: 's1.gmail.com', from: '', replyTo: '', subject: 'Deployment Aborted', to: 's1.gmail.com'
+                }		
+              }
+        }
+    }
+}	
+
+
+
+	- Build Triggers :::
+	
+		Is used to Automate the Job Scheduling!
+	
+	
+		- Build Periodic :			# https://crontab.guru/
+			
+			- Used to trigger the jenkins jobs irrespective of code change. - It is not meant for CI/CD.
+			- To perform any process automation
+			- The build is sheduled based on the crontab 
+			
+			
+			Eg.: 
+			
+				Environments :
+				
+					Non-Prod Environments												=====>		Prod Environments
+					
+						Should be available only during the business Hours 								Should be available 24/7
+						
+							9AM - 10PM 
+							
+						Jenkins Project1 		Scheduled to run at 8:45AM
+						
+							- Task - Start all the Non-Prod Servers 
+
+						Jenkins Project2 		Scheduled to run at 10:15PM
+						
+							- Task - Stop all the Non-Prod Servers 							
+							
+					
+Next :::
+
+		- GitHub Webhook	
+		
+		- PollSCM 
+
+Docker!
